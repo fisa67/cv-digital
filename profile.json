@@ -1,0 +1,504 @@
+{
+  "version": 1,
+  "meta": {
+    "title": "Filipe Santos — Executive Career Profile",
+    "description": "",
+    "lang": "pt-BR",
+    "updatedAt": "2026-11-23T14:06:28Z"
+  },
+  "hero": {
+    "eyebrow": "Executive Career Profile",
+    "name": "Filipe Santos",
+    "badge": "Data • Strategy • Operations",
+    "title": "Strategic Planning & Business Performance & Workforce Management",
+    "keywords": [
+      "Forecast",
+      "Budget",
+      "Workforce Management",
+      "Customer Experience"
+    ],
+    "location": "Belo Horizonte, MG — Brasil",
+    "summary": "Profissional com <strong style=\"color:#93C5FD\">+15 anos de experiência</strong> em planejamento estratégico, forecast, budget e workforce management. Especialista em transformar dados complexos em decisões de negócio com foco em eficiência operacional, qualidade, customer experience e business intelligence. Histórico comprovado em ambientes de alta escala, contact centers, fintechs e grandes corporações.",
+    "photo": "uploads/profile.jpg"
+  },
+  "contacts": {
+    "phone": "",
+    "email": "fisa67@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/fisa67/",
+    "whatsapp": "5531995070067",
+    "website": "",
+    "links": [
+      {
+        "label": "Projeto BookCringe",
+        "footerLabel": "BookCringe",
+        "url": "https://bookcringe.com.br"
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "icon": "⏱️",
+      "value": "+15",
+      "label": "Anos de Experiência",
+      "sub": "Desde 2006 — atuando em planejamento, dados e operações",
+      "featured": true
+    },
+    {
+      "icon": "🏢",
+      "value": "6+",
+      "label": "Empresas",
+      "sub": "Inter, Localiza, AeC, Atento, Belo Dente, Simplificar",
+      "featured": false
+    },
+    {
+      "icon": "🎯",
+      "value": "10+",
+      "label": "Projetos Estratégicos",
+      "sub": "Planejamento, otimização e transformação operacional",
+      "featured": false
+    },
+    {
+      "icon": "🔑",
+      "value": "3",
+      "label": "Áreas-chave",
+      "sub": "Planejamento · Qualidade · Performance",
+      "featured": false
+    }
+  ],
+  "about": {
+    "title": "Sobre Mim",
+    "subtitle": "Estratégia, Dados & Impacto",
+    "html": "<p>Sou um profissional com <span class=\"about-highlight\">+15 anos navegando na intersecção entre dados, planejamento estratégico e operações de alta escala</span>. Minha trajetória foi construída em empresas de referência nos segmentos de fintech, BPO e tecnologia, onde aprendi que os melhores resultados emergem quando dados rigorosos encontram visão estratégica.</p><p>Ao longo da carreira, especializei-me em transformar volumes massivos de informação operacional em <span class=\"about-highlight\">forecast preciso, orçamentos controlados e decisões assertivas</span>. Atuo com profundidade em workforce management, dimensionamento de equipes, controle de headcount e análise de produtividade multicanal, sempre orientado por KPIs e métricas de negócio.</p><p>Minha formação em <span class=\"about-highlight\">Gestão de Sistemas de Informação</span> e pós-graduação em <span class=\"about-highlight\">Liderança Inovadora</span> me permitem transitar com facilidade entre o técnico e o estratégico, conectando dados à tomada de decisão de gestores e diretores. Hoje, no Banco Inter, contribuo para a evolução da experiência do cliente por meio de uma abordagem analítica, transversal e orientada a impacto.</p>",
+    "stats": [
+      {
+        "value": "2006",
+        "label": "Início de carreira"
+      },
+      {
+        "value": "BI",
+        "label": "Business Intelligence"
+      },
+      {
+        "value": "WFM",
+        "label": "Workforce Management"
+      },
+      {
+        "value": "CX",
+        "label": "Customer Experience"
+      }
+    ]
+  },
+  "currentRole": {
+    "enabled": true,
+    "sectionTitle": "Experiência Atual",
+    "heading": "Banco Inter",
+    "desc": "Fintech de alta escala — ambiente fintech de alta escala.",
+    "icon": "🏦",
+    "company": "Banco Inter S.A.",
+    "role": "Analista | Customer Experience",
+    "period": "Mai 2026 — Presente · Belo Horizonte, MG",
+    "badge": "● POSIÇÃO ATUAL",
+    "description": "Atuação em ambiente fintech de alta escala, conectando qualidade, performance operacional e análise de dados para suportar decisões estratégicas, otimizar processos e elevar a experiência do cliente. Responsável por análise de indicadores, identificação de oportunidades e suporte transversal às áreas de negócio.",
+    "pillars": [
+      "Qualidade",
+      "Performance",
+      "Dados",
+      "Melhoria Contínua",
+      "Customer Experience"
+    ]
+  },
+  "experience": {
+    "title": "Experiência Profissional",
+    "subtitle": "Trajetória Executiva",
+    "desc": "Uma carreira construída sobre dados, planejamento e resultados mensuráveis.",
+    "items": [
+      {
+        "id": "exp-1",
+        "icon": "🏦",
+        "color1": "#FF6B00",
+        "color2": "#FF3B00",
+        "role": "Analista — Customer Experience",
+        "company": "Banco Inter S.A.",
+        "start": "Mai 2026",
+        "end": "Presente",
+        "extra": "Belo Horizonte, MG",
+        "current": true,
+        "description": "Atuação em gestão de indicadores operacionais com foco em qualidade, eficiência e melhoria contínua em ambiente de alta escala, uma das maiores fintechs da América Latina.",
+        "achievements": [
+          "Responsável pela análise de performance e identificação de oportunidades de melhoria com base em dados operacionais estruturados.",
+          "Suporte à tomada de decisão orientada por dados, conectando análises quantitativas às estratégias de qualidade e experiência do cliente.",
+          "Atuação transversal com áreas de negócio, integrando qualidade, operação e estratégia para otimização de processos em escala.",
+          "Contribuição para a evolução da experiência do cliente por meio de diagnósticos, segmentações e análise de indicadores-chave."
+        ]
+      },
+      {
+        "id": "exp-2",
+        "icon": "🚗",
+        "color1": "#16A34A",
+        "color2": "#059669",
+        "role": "Analista de Informações Gerenciais",
+        "company": "Localiza Rent a Car",
+        "start": "Mar 2021",
+        "end": "Mai 2026",
+        "extra": "5 anos · Belo Horizonte, MG",
+        "current": false,
+        "description": "",
+        "achievements": [
+          "Gestão de orçamento e rastreamento de despesas da central de atendimento com elaboração de relatórios de KPIs financeiros e operacionais.",
+          "Garantia de assertividade no forecast de demanda por meio de análises e projeções de cenários multicanal (VOZ, WhatsApp, e-mail, omnichannel).",
+          "Controle e otimização do headcount, contratações, férias, banco de horas, desligamentos e escalas de trabalho com foco em eficiência.",
+          "Gestão de workforce management com controle de skills, aderência, absenteísmo e estratégias de discador para maximização de produtividade.",
+          "Elaboração de análises preditivas com base em histórico orçamentário para antecipar cenários e orientar a gerência na tomada de decisão estratégica."
+        ]
+      },
+      {
+        "id": "exp-3",
+        "icon": "📞",
+        "color1": "#2563EB",
+        "color2": "#1D4ED8",
+        "role": "Analista de Planejamento",
+        "company": "AeC Contact Center",
+        "start": "Ago 2019",
+        "end": "Mar 2021",
+        "extra": "1 ano e 7 meses · Belo Horizonte, MG",
+        "current": false,
+        "description": "",
+        "achievements": [
+          "Gestão da cadeia completa de planejamento (Online, NOC, Tático, Curto/Longo Prazo e Financeiro) de operações ativas, receptivas e digitais para clientes Telecom.",
+          "Construção de dimensionamentos, acompanhamento de disponibilidade e levantamento de oportunidades em tempo real (intraday).",
+          "Diagnóstico de desvios e criação de novas estratégias operacionais com base na Matriz Robbyson e gerenciamento de escalas."
+        ]
+      },
+      {
+        "id": "exp-4",
+        "icon": "📊",
+        "color1": "#7C3AED",
+        "color2": "#6D28D9",
+        "role": "Gestor de Planejamento",
+        "company": "Atento Brasil S/A",
+        "start": "Mai 2018",
+        "end": "Ago 2019",
+        "extra": "1 ano e 3 meses · São Paulo, SP",
+        "current": false,
+        "description": "",
+        "achievements": [
+          "Definição e acompanhamento de objetivos financeiros, gerenciando reports de produção diária, WIP e faturamento para atingimento de metas.",
+          "Análise 360° das operações da conta, identificando problemas e oportunidades para melhoria de desempenho e rentabilidade.",
+          "Acompanhamento das previsões versus realizações, conciliando premissas orçamentárias com o resultado real da operação."
+        ]
+      },
+      {
+        "id": "exp-5",
+        "icon": "🔍",
+        "color1": "#7C3AED",
+        "color2": "#6D28D9",
+        "role": "Consultor & Analista de Planejamento",
+        "company": "Atento Brasil S/A",
+        "start": "Set 2006",
+        "end": "Mai 2018",
+        "extra": "~12 anos · Belo Horizonte / São Paulo / SP",
+        "current": false,
+        "description": "",
+        "achievements": [
+          "Progressão de carreira: Analista → Consultor de Planejamento, com passagens por BH, São Paulo e São Caetano do Sul, incluindo implantação em outros países.",
+          "Planejamento estratégico: dimensionamento intraday/intraweek, forecast, criação de escalas, alocação de recursos e controle de tráfego.",
+          "Aplicação de métodos de controle de qualidade: cartas de controle, Pareto, causa e efeito, histograma e análises de dispersão.",
+          "Implantação de cases de sucesso em múltiplas contas e unidades, incluindo operações internacionais da empresa."
+        ]
+      },
+      {
+        "id": "exp-6",
+        "icon": "🦷",
+        "color1": "#06B6D4",
+        "color2": "#0891B2",
+        "role": "Analista de TI",
+        "company": "Belo Dente Odontologia",
+        "start": "Abr 2014",
+        "end": "Out 2016",
+        "extra": "2 anos e 6 meses · Belo Horizonte, MG",
+        "current": false,
+        "description": "",
+        "achievements": [
+          "Implantação de ERP para área de saúde e gestão completa da infraestrutura de TI, servidores, redes, VMs e telefonia (Oracle 11g, VMware, Windows Server 2012).",
+          "Suporte ao usuário final e beneficiários em todos os estados do país, com gestão de segurança de dados via Squid e GPO."
+        ]
+      },
+      {
+        "id": "exp-7",
+        "icon": "⚙️",
+        "color1": "#64748B",
+        "color2": "#475569",
+        "role": "Analista de Sistemas",
+        "company": "Simplificar",
+        "start": "Ago 2012",
+        "end": "Abr 2014",
+        "extra": "1 ano e 8 meses · Belo Horizonte, MG",
+        "current": false,
+        "description": "",
+        "achievements": [
+          "Implantação e configuração do Primavera P6 EPPM em ambiente multiusuário, com integração Oracle (WebLogic, BI Publisher, BPM, SharePoint).",
+          "Gestão de infraestrutura de redes, suporte técnico, administração de banco de dados e servidores corporativos."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Competências",
+    "subtitle": "Stack Profissional",
+    "categories": {
+      "core": "Core Strategy",
+      "tech": "Ferramentas Técnicas",
+      "soft": "Qualidade & Operações"
+    },
+    "items": [
+      {
+        "name": "Forecast",
+        "category": "core"
+      },
+      {
+        "name": "Budget",
+        "category": "core"
+      },
+      {
+        "name": "Workforce Management",
+        "category": "core"
+      },
+      {
+        "name": "Planejamento Estratégico",
+        "category": "core"
+      },
+      {
+        "name": "Controladoria",
+        "category": "core"
+      },
+      {
+        "name": "Business Intelligence",
+        "category": "core"
+      },
+      {
+        "name": "KPIs & Indicadores",
+        "category": "core"
+      },
+      {
+        "name": "Headcount",
+        "category": "core"
+      },
+      {
+        "name": "People Analytics",
+        "category": "core"
+      },
+      {
+        "name": "Power BI",
+        "category": "tech"
+      },
+      {
+        "name": "Excel Avançado",
+        "category": "tech"
+      },
+      {
+        "name": "Oracle",
+        "category": "tech"
+      },
+      {
+        "name": "ERP",
+        "category": "tech"
+      },
+      {
+        "name": "SQL",
+        "category": "tech"
+      },
+      {
+        "name": "Primavera P6",
+        "category": "tech"
+      },
+      {
+        "name": "WFM Tools",
+        "category": "tech"
+      },
+      {
+        "name": "Customer Experience",
+        "category": "soft"
+      },
+      {
+        "name": "Qualidade",
+        "category": "soft"
+      },
+      {
+        "name": "Melhoria Contínua",
+        "category": "soft"
+      },
+      {
+        "name": "Operações",
+        "category": "soft"
+      },
+      {
+        "name": "Gestão de Processos",
+        "category": "soft"
+      },
+      {
+        "name": "Performance",
+        "category": "soft"
+      },
+      {
+        "name": "PDCA",
+        "category": "soft"
+      },
+      {
+        "name": "Lean",
+        "category": "soft"
+      },
+      {
+        "name": "Scrum / Ágil",
+        "category": "soft"
+      }
+    ]
+  },
+  "education": {
+    "title": "Formação Acadêmica",
+    "subtitle": "Educação",
+    "items": [
+      {
+        "icon": "🎓",
+        "degree": "Pós-Graduação em Liderança Inovadora",
+        "institution": "UniCesumar",
+        "meta": "Concluído · Gestão de Equipes, Projetos e Processos Inovadores"
+      },
+      {
+        "icon": "💻",
+        "degree": "Gestão em Sistemas de Informação",
+        "institution": "Faculdade IBHES",
+        "meta": "Concluído · Análise de Sistemas, BI, Gestão de TI"
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Certificações & Cursos",
+    "subtitle": "Desenvolvimento Profissional",
+    "items": [
+      {
+        "icon": "🏆",
+        "name": "Foco no Resultado"
+      },
+      {
+        "icon": "🎯",
+        "name": "Accountability"
+      },
+      {
+        "icon": "⚡",
+        "name": "Agilidade além da Tecnologia"
+      },
+      {
+        "icon": "❤️",
+        "name": "Clientividade"
+      },
+      {
+        "icon": "⭐",
+        "name": "Customer Experience"
+      },
+      {
+        "icon": "🔒",
+        "name": "LGPD — Lei Geral de Proteção de Dados"
+      },
+      {
+        "icon": "🛡️",
+        "name": "Segurança da Informação"
+      },
+      {
+        "icon": "🧠",
+        "name": "Inteligência Emocional"
+      },
+      {
+        "icon": "✨",
+        "name": "Jeito Disney de Atender"
+      },
+      {
+        "icon": "🔄",
+        "name": "PDCA"
+      },
+      {
+        "icon": "📈",
+        "name": "Conceito Lean"
+      },
+      {
+        "icon": "💡",
+        "name": "Pensamento Analítico"
+      },
+      {
+        "icon": "🔬",
+        "name": "Inteligência Competitiva"
+      },
+      {
+        "icon": "🚀",
+        "name": "Profissional de Alto Desempenho"
+      },
+      {
+        "icon": "🌟",
+        "name": "Empowerment — Protagonismo e Maturidade"
+      },
+      {
+        "icon": "🔑",
+        "name": "Dados Sensíveis"
+      },
+      {
+        "icon": "⚖️",
+        "name": "Política Antissuborno e Anticorrupção"
+      },
+      {
+        "icon": "📚",
+        "name": "Scrum — Processos Ágeis (IT Web)"
+      },
+      {
+        "icon": "🛠️",
+        "name": "Total View / NICE WFM — Administrador"
+      },
+      {
+        "icon": "📊",
+        "name": "Business Intelligence — Intel Corporation"
+      },
+      {
+        "icon": "💼",
+        "name": "Introdução ao Gerenciamento de Projetos (PMI MG)"
+      },
+      {
+        "icon": "🤝",
+        "name": "Estratégias de Negociação e Vendas (SENAC MG)"
+      },
+      {
+        "icon": "🎨",
+        "name": "Photoshop / InDesign / DreamWeaver (SEVEN)"
+      },
+      {
+        "icon": "💻",
+        "name": "Desenvolvimento Web, Redes e BD (APTECH)"
+      }
+    ]
+  },
+  "languages": {
+    "title": "Idiomas",
+    "subtitle": "Comunicação Global",
+    "items": [
+      {
+        "flag": "🇧🇷",
+        "name": "Português",
+        "level": "Nativo",
+        "percent": 100
+      },
+      {
+        "flag": "🇺🇸",
+        "name": "Inglês",
+        "level": "Fluente — ICBEU",
+        "percent": 90
+      },
+      {
+        "flag": "🇫🇷",
+        "name": "Francês",
+        "level": "Básico — Em andamento",
+        "percent": 25
+      }
+    ]
+  },
+  "footer": {
+    "quote": "\"Transformando <span>dados em decisões</span> e <span>planejamento em resultados</span>.\"",
+    "sub": "Filipe Santos · Belo Horizonte, MG · 2026"
+  }
+}
