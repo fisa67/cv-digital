@@ -4,21 +4,22 @@
     "title": "Filipe Santos — Executive Career Profile",
     "description": "",
     "lang": "pt-BR",
-    "updatedAt": "2026-11-24T00:05:39.350Z"
+    "updatedAt": "2026-11-24T23:29:01.151Z"
   },
   "hero": {
     "eyebrow": "Executive Career Profile",
     "name": "Filipe Santos",
     "badge": "Data • Strategy • Operations",
-    "title": "Strategic Planning & Business Performance & Workforce Management",
+    "title": "Data & Business Analytics | Strategic Planning | CX",
     "keywords": [
+      "Data Analytics",
+      "Business Intelligence",
+      "Strategic Planning",
       "Forecast",
-      "Budget",
-      "Workforce Management",
-      "Customer Experience"
+      "WFM"
     ],
-    "location": "Belo Horizonte, MG — Brasil",
-    "summary": "Profissional com <strong style=\"color:#93C5FD\">+15 anos de experiência</strong> em planejamento estratégico, forecast, budget e workforce management. Especialista em transformar dados complexos em decisões de negócio com foco em eficiência operacional, qualidade, customer experience e business intelligence. Histórico comprovado em ambientes de alta escala, contact centers, fintechs e grandes corporações.",
+    "location": "Belo Horizonte, MG - Brasil",
+    "summary": "Profissional com <strong style=\"color:rgb(147, 197, 253)\">+15 anos de experiência</strong> em planejamento estratégico, inteligência de negócios e gestão de operações. Especialista em transformar dados complexos em insights e soluções que impulsionam a eficiência operacional, a governança de processos e a tomada de decisão. Experiência em ambientes de alta escala, fintechs conectando estratégia, tecnologia e resultados.",
     "photo": "uploads/profile.jpg"
   },
   "contacts": {
@@ -32,6 +33,11 @@
         "label": "Projeto BookCringe",
         "footerLabel": "BookCringe",
         "url": "https://bookcringe.com.br"
+      },
+      {
+        "label": "Forja Dev",
+        "footerLabel": "Forja Dev",
+        "url": "https://aforja.dev.br"
       }
     ]
   },
@@ -91,19 +97,19 @@
   "currentRole": {
     "enabled": true,
     "sectionTitle": "Experiência Atual",
-    "heading": "Banco Inter",
-    "desc": "Fintech de alta escala — ambiente fintech de alta escala.",
+    "heading": "Fintech de alta escala",
+    "desc": "Ambiente fintech de alta escala.",
     "icon": "🏦",
     "company": "Banco Inter S.A.",
-    "role": "Analista | Customer Experience",
+    "role": "Data Analist | Customer Experience",
     "period": "Mai 2026 — Presente · Belo Horizonte, MG",
     "badge": "● POSIÇÃO ATUAL",
-    "description": "Atuação em ambiente fintech de alta escala, conectando qualidade, performance operacional e análise de dados para suportar decisões estratégicas, otimizar processos e elevar a experiência do cliente. Responsável por análise de indicadores, identificação de oportunidades e suporte transversal às áreas de negócio.",
+    "description": "<p>Atuação em Data Analytics e Planejamento na área de Customer Experience (CX), conectando indicadores operacionais à tomada de decisão e à eficiência do negócio.</p><p><br></p><h3>Principais entregas:</h3><ul><li>Business Intelligence: Dashboards, indicadores e análises gerenciais.</li><li>Planejamento &amp; WFM: Forecast, dimensionamento e planejamento de capacidade.</li><li>Automação &amp; Processos: Otimização de fluxos e integração de dados.</li><li>Performance &amp; CX: Análise de resultados, qualidade e experiência do cliente.</li></ul><p></p>",
     "pillars": [
-      "Qualidade",
-      "Performance",
-      "Dados",
-      "Melhoria Contínua",
+      "Inteligência de Dados",
+      "Governança de Processos",
+      "Treinamento & Qualidade",
+      "Eficiência Operacional",
       "Customer Experience"
     ]
   },
@@ -123,12 +129,12 @@
         "end": "Presente",
         "extra": "Belo Horizonte, MG",
         "current": true,
-        "description": "Atuação em gestão de indicadores operacionais com foco em qualidade, eficiência e melhoria contínua em ambiente de alta escala, uma das maiores fintechs da América Latina.",
+        "description": "<p>Atuação em análise de dados e indicadores de Customer Experience, apoiando decisões estratégicas, avaliação de performance e identificação de oportunidades de melhoria operacional.</p>",
         "achievements": [
-          "Responsável pela análise de performance e identificação de oportunidades de melhoria com base em dados operacionais estruturados.",
-          "Suporte à tomada de decisão orientada por dados, conectando análises quantitativas às estratégias de qualidade e experiência do cliente.",
-          "Atuação transversal com áreas de negócio, integrando qualidade, operação e estratégia para otimização de processos em escala.",
-          "Contribuição para a evolução da experiência do cliente por meio de diagnósticos, segmentações e análise de indicadores-chave."
+          "Análise e acompanhamento de indicadores de performance e experiência do cliente.",
+          "Identificação de oportunidades de melhoria por meio de dados e análises quantitativas.",
+          "Geração de insights para apoiar decisões e direcionamentos estratégicos.",
+          "Atuação integrada com áreas parceiras na evolução de processos e eficiência operacional."
         ]
       },
       {
@@ -507,8 +513,8 @@
         "id": "proj-bookcringe",
         "title": "BookCringe",
         "subtitle": "Cringe por fora, cult por dentro.",
-        "description": "<p>Livros, filmes, séries e cultura pop conectados de um jeito que você dificilmente encontra por aí. Biblioteca com resenhas e notas, vídeos, estatísticas de leitura e o Clube do Livro com leituras mensais.</p>",
-        "image": "",
+        "description": "<p>Criação e desenvolvimento de uma plataforma de conteúdo sobre livros, filmes e cultura pop, integrando produção editorial, presença digital, comunidade e parcerias.</p>",
+        "image": "uploads/projects/proj-bookcringe.jpg",
         "tags": [
           "Livros",
           "Cultura Pop",
@@ -522,10 +528,10 @@
       },
       {
         "id": "proj-forja-de-apps",
-        "title": "Forja de Apps",
+        "title": "FORJA DEV",
         "subtitle": "Iniciativa de criação de aplicativos",
-        "description": "",
-        "image": "",
+        "description": "Iniciativa independente voltada à concepção e desenvolvimento de produtos digitais, explorando tecnologia, inteligência artificial e soluções centradas na experiência do usuário.",
+        "image": "uploads/projects/proj-forja-de-apps.jpg",
         "tags": [],
         "url": "",
         "buttonLabel": "Visitar projeto",
