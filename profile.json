@@ -4,7 +4,7 @@
     "title": "Filipe Santos — Executive Career Profile",
     "description": "",
     "lang": "pt-BR",
-    "updatedAt": "2026-11-23T14:06:28Z"
+    "updatedAt": "2026-11-24T00:05:39.350Z"
   },
   "hero": {
     "eyebrow": "Executive Career Profile",
@@ -478,12 +478,6 @@
     "subtitle": "Comunicação Global",
     "items": [
       {
-        "flag": "🇧🇷",
-        "name": "Português",
-        "level": "Nativo",
-        "percent": 100
-      },
-      {
         "flag": "🇺🇸",
         "name": "Inglês",
         "level": "Fluente — ICBEU",
@@ -492,6 +486,12 @@
       {
         "flag": "🇫🇷",
         "name": "Francês",
+        "level": "Básico — Em andamento",
+        "percent": 43
+      },
+      {
+        "flag": "🇪🇸",
+        "name": "Espanhol",
         "level": "Básico — Em andamento",
         "percent": 25
       }
