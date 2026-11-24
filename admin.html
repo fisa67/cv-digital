@@ -134,6 +134,10 @@ dialog h3{margin:0 0 12px}
 dialog .acts{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
 .fatal{max-width:620px;margin:80px auto;padding:30px;background:#fff;border-radius:14px;box-shadow:var(--shadow)}
 .fatal pre{background:var(--navy);color:#E2E8F0;padding:12px 16px;border-radius:8px;overflow:auto}
+.img-box{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.img-box .thumb{width:176px;height:99px;border-radius:10px;object-fit:cover;background:#E2E8F0;border:1px solid var(--line);flex:none}
+.img-box .none{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;text-align:center;padding:6px}
+.img-box .acts2{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .auth-screen{min-height:100vh;display:grid;place-items:center;padding:24px;background:var(--bg)}.auth-card{width:min(440px,100%);text-align:center;background:#fff;padding:36px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.auth-card h1{font-size:23px;margin:0 0 8px}.auth-card p{color:var(--muted);margin:0 0 22px}.auth-card .btn{justify-content:center;padding:11px 18px}
 
 @media(max-width:1180px){.work{grid-template-columns:minmax(0,1fr)}.pv{display:none}.work.showpv{grid-template-columns:minmax(0,1fr)}.work.showpv #panel{display:none}.work.showpv .pv{display:block}}
@@ -208,6 +212,7 @@ const DRAFT_KEY = 'cv-admin-draft-v1';
 const PHOTO_PATH = 'uploads/profile.jpg';
 const state = {
   profile: null, server: null, photo: null,  // photo = {blob, dataUrl}
+  assets: {},  // imagens de projetos: caminho -> {blob, dataUrl, sent}
   section: 'hero', expanded: new Set(), dirty: false, dir: null, undo: []
 };
 
@@ -217,6 +222,7 @@ const NAV = [
   ['experience', 'Experiências', '💼', 'sec-current'], ['skills', 'Competências', '🧩', 'sec-skills'],
   ['education', 'Formação', '🎓', 'sec-education'], ['certs', 'Certificações', '🏆', 'sec-certifications'],
   ['languages', 'Idiomas', '🌐', 'sec-languages'],
+  ['projects', 'Projetos & Iniciativas', '🚀', 'sec-projects'],
   ['—', 'Outras áreas do site'],
   ['metrics', 'Métricas', '📊', 'sec-metrics'], ['about', 'Sobre Mim', '📝', 'sec-about'],
   ['footer', 'Rodapé e Geral', '⚙️', 'sec-footer']
@@ -288,7 +294,8 @@ const TPL = {
   lang: () => ({flag: '🏳️', name: '', level: '', percent: 50}),
   metric: () => ({icon: '📈', value: '', label: '', sub: '', featured: false}),
   stat: () => ({value: '', label: ''}),
-  link: () => ({label: '', footerLabel: '', url: 'https://'})
+  link: () => ({label: '', footerLabel: '', url: 'https://'}),
+  project: () => ({id: uid(), title: 'Novo projeto', subtitle: '', description: '', image: '', tags: [], url: '', buttonLabel: 'Visitar projeto', featured: false})
 };
 function normalize(p) {
   const d = (o, k, v) => { if (o[k] == null) o[k] = v; return o[k]; };
@@ -297,6 +304,8 @@ function normalize(p) {
   d(p.currentRole, 'pillars', []); d(p.experience, 'items', []); d(p.skills, 'items', []);
   d(p.skills, 'categories', {core: 'Core Strategy', tech: 'Ferramentas Técnicas', soft: 'Qualidade & Operações'});
   d(p.education, 'items', []); d(p.certifications, 'items', []); d(p.languages, 'items', []);
+  d(p, 'projects', {}); d(p.projects, 'enabled', true); d(p.projects, 'title', 'Projetos & Iniciativas'); d(p.projects, 'items', []);
+  p.projects.items.forEach(x => { d(x, 'id', uid()); d(x, 'tags', []); d(x, 'image', ''); });
   p.hero.photo = PHOTO_PATH;
   p.experience.items.forEach(x => { d(x, 'id', uid()); d(x, 'achievements', []); });
   return p;
@@ -314,7 +323,7 @@ function updateStatus() {
   $('#btnUndo').disabled = !state.undo.length;
 }
 function saveDraft() {
-  try { localStorage.setItem(DRAFT_KEY, JSON.stringify({profile: state.profile, photoDataUrl: state.photo ? state.photo.dataUrl : null})); }
+  try { localStorage.setItem(DRAFT_KEY, JSON.stringify({profile: state.profile, photoDataUrl: state.photo ? state.photo.dataUrl : null, assets: assetUrls(true)})); }
   catch (e) { toast('Rascunho local não pôde ser guardado (armazenamento cheio).', true); }
 }
 function pushUndo() { state.undo.push(JSON.stringify(state.profile)); if (state.undo.length > 30) state.undo.shift(); updateStatus(); }
@@ -341,7 +350,8 @@ const pvOrigin = () => location.origin === 'null' ? '*' : location.origin;
 function postPreview(msg) { if (pvReady && frame.contentWindow) frame.contentWindow.postMessage(msg, pvOrigin()); }
 const hello = () => { if (frame.contentWindow) frame.contentWindow.postMessage({type: 'cv-hello'}, pvOrigin()); };
 frame.addEventListener('load', hello);
-function pushPreview() { if (state.profile) postPreview({type: 'cv-profile', data: state.profile, photoSrc: state.photo ? state.photo.dataUrl : null}); }
+const assetUrls = unsentOnly => { const o = {}; for (const [k, a] of Object.entries(state.assets)) if (!unsentOnly || !a.sent) o[k] = a.dataUrl; return o; };
+function pushPreview() { if (state.profile) postPreview({type: 'cv-profile', data: state.profile, photoSrc: state.photo ? state.photo.dataUrl : null, assets: assetUrls()}); }
 window.addEventListener('message', e => {
   if (e.source !== frame.contentWindow || e.origin !== location.origin) return;
   const m = e.data || {};
@@ -514,6 +524,17 @@ const PANELS = {
     return pageHead('Idiomas', 'Nível de cada idioma (a barra usa o percentual).') + secHead('languages') + `<div class="card"><h3>Idiomas</h3>${listRows('languages.items', [
       {k: 'flag', label: 'Bandeira', flex: .6}, {k: 'name', label: 'Idioma', flex: 1.3}, {k: 'level', label: 'Nível', flex: 2}, {k: 'percent', label: '% da barra', flex: .8, type: 'number'}], 'lang', 'Adicionar idioma')}</div>`;
   },
+  projects() {
+    const it = v('projects.items');
+    return pageHead('Projetos & Iniciativas', 'Cartões no mesmo estilo da “Experiência Atual”, exibidos após Idiomas e antes do rodapé. Quantidade ilimitada.') + `
+    <div class="card"><h3>Cabeçalho da seção</h3>
+      ${chk('projects.enabled', 'Exibir esta seção no site')}
+      <div class="grid c2" style="margin-top:12px">${inp('projects.title', 'Título da seção')}${inp('projects.subtitle', 'Subtítulo')}${area('projects.desc', 'Texto de apoio (opcional)', 2, {cls: 'full'})}</div></div>
+    <div class="card"><h3>Projetos <small>${it.length} cadastrado(s) · arraste pelo ⠿ ou use ↑ ↓ · projetos em destaque ocupam a linha toda</small></h3>
+      <div data-list="projects.items">${it.map(projCard).join('') || '<div class="empty">Nenhum projeto — a seção não aparece no site.</div>'}</div>
+      <div style="margin-top:6px"><button class="btn primary sm" data-action="add" data-path="projects.items" data-tpl="project" data-pos="end">＋ Adicionar projeto</button></div>
+    </div>`;
+  },
   metrics() {
     return pageHead('Métricas', 'Cartões de números logo abaixo do topo (o marcado como “destaque” fica escuro).') + `<div class="card"><h3>Cartões</h3>${listRows('metrics', [
       {k: 'icon', label: 'Ícone', flex: .5}, {k: 'value', label: 'Valor', flex: .7}, {k: 'label', label: 'Rótulo', flex: 1.3}, {k: 'sub', label: 'Legenda', flex: 2.2}, {k: 'featured', label: 'Destaque', flex: .6, type: 'bool'}], 'metric', 'Adicionar métrica', {btnW: 100})}</div>`;
@@ -533,6 +554,28 @@ const PANELS = {
       ${inp('meta.lang', 'Idioma (ex.: pt-BR)')}</div></div>`;
   }
 };
+function projCard(it, i) {
+  const p = `projects.items.${i}`, open = state.expanded.has(it.id);
+  const src = it.image ? ((state.assets[it.image] && state.assets[it.image].dataUrl) || `${it.image}?v=${encodeURIComponent(v('meta.updatedAt') || '')}`) : '';
+  return `<div class="item ${open ? 'open' : ''}" data-item data-i="${i}">
+    <div class="item-h"><span class="handle" title="Arraste para reordenar">⠿</span>
+      <span class="chev" style="cursor:pointer" data-action="toggle" data-id="${it.id}">▶</span>
+      <div class="item-t" data-action="toggle" data-id="${it.id}"><b data-live="${p}.title">${esc(it.title)}</b><small data-live="${p}.subtitle">${esc(it.subtitle)}</small></div>
+      ${it.featured ? '<span class="badge">DESTAQUE</span>' : ''}
+      <span class="btns">${btns('projects.items', i, v('projects.items').length)}</span></div>
+    ${open ? `<div class="item-b">
+      <div class="grid c2">${inp(p + '.title', 'Título')}${inp(p + '.subtitle', 'Subtítulo')}</div>
+      ${rte(p + '.description', 'Descrição', {})}
+      <div class="fld"><span>Imagem (capa do cartão)</span><div class="img-box">
+        ${src ? `<img class="thumb" src="${esc(src)}" alt="">` : '<div class="thumb none">Sem imagem</div>'}
+        <div class="acts2"><label class="btn sm">${src ? 'Trocar imagem' : 'Enviar imagem'}<input type="file" accept="image/*" data-proj-img="${i}" hidden></label>
+          ${src ? `<button class="btn sm danger" data-action="proj-img-remove" data-i="${i}">Remover imagem</button>` : ''}
+          <small>Convertida para JPG (até 1280 px) e salva em <code>uploads/projects/</code>.</small></div></div></div>
+      ${area(p + '.tags', 'Tags (uma por linha)', 3, {lines: true})}
+      <div class="grid c2">${inp(p + '.url', 'URL do projeto', {type: 'url', dtype: 'url', ph: 'https://...', hint: 'Sem URL, o botão não aparece.'})}${inp(p + '.buttonLabel', 'Texto do botão', {ph: 'Visitar projeto'})}</div>
+      ${chk(p + '.featured', 'Destaque (selo “★ DESTAQUE”, cartão em largura total)')}
+    </div>` : ''}</div>`;
+}
 function expCard(it, i) {
   const p = `experience.items.${i}`, open = state.expanded.has(it.id);
   return `<div class="item ${open ? 'open' : ''}" data-item data-i="${i}">
@@ -573,7 +616,7 @@ panel.addEventListener('input', e => {
     setPath(state.profile, t.dataset.bind, val);
     changed();
     $$('[data-live]').forEach(n => { n.textContent = getPath(state.profile, n.dataset.live) ?? ''; });
-    if (t.type === 'checkbox' && /\.current$/.test(t.dataset.bind)) renderPanel();
+    if (t.type === 'checkbox' && /^(experience|projects)\.items\.\d+\.(current|featured)$/.test(t.dataset.bind)) renderPanel();
     if (t.dataset.rerender) renderPanel();
   } else if (t.classList && t.classList.contains('rte-area')) onRte(t);
 });
@@ -582,6 +625,7 @@ panel.addEventListener('change', e => {
   if (t.dataset && t.dataset.type === 'digits') t.value = getPath(state.profile, t.dataset.bind);
   if (t.dataset && t.dataset.type === 'url') { const u = normUrl(t.value); t.value = u; setPath(state.profile, t.dataset.bind, u); changed(); }
   if (t.id === 'photoInput' && t.files[0]) handlePhoto(t.files[0]);
+  if (t.dataset && t.dataset.projImg != null && t.files[0]) handleProjectImage(Number(t.dataset.projImg), t.files[0]);
 });
 panel.addEventListener('click', e => {
   const b = e.target.closest('[data-action]');
@@ -598,6 +642,10 @@ function action(b) {
   if (a === 'toggle') { const id = b.dataset.id; state.expanded.has(id) ? state.expanded.delete(id) : state.expanded.add(id); renderPanel(); return; }
   if (a === 'discard-draft') return discardChanges();
   if (a === 'skill-add') return addSkill();
+  if (a === 'proj-img-remove') {
+    const it = v('projects.items')[i]; if (!it) return;
+    pushUndo(); delete state.assets[it.image]; it.image = ''; changed(); renderPanel(); return;
+  }
   const arr = path ? v(path) : null;
   if (a === 'add') {
     pushUndo(); const item = TPL[b.dataset.tpl]();
@@ -730,6 +778,25 @@ async function handlePhoto(file) {
     changed();
   } catch (err) { toast('Não foi possível ler a imagem: ' + err.message, true); }
 }
+async function handleProjectImage(i, file) {
+  const it = v('projects.items')[i]; if (!it) return;
+  if (!/^image\//.test(file.type)) return toast('Escolha um arquivo de imagem.', true);
+  if (file.size > 25 * 1024 * 1024) return toast('Imagem muito grande (máx. 25 MB).', true);
+  try {
+    const bmp = await createImageBitmap(file, {imageOrientation: 'from-image'});
+    const k = Math.min(1, 1280 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas'); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(bmp, 0, 0, c.width, c.height);
+    let q = 0.85, blob;
+    do { blob = await new Promise(r => c.toBlob(r, 'image/jpeg', q)); q -= 0.1; } while (blob.size > 700 * 1024 && q > 0.45);
+    const dataUrl = await new Promise(r => { const f = new FileReader(); f.onload = () => r(f.result); f.readAsDataURL(blob); });
+    const path = `uploads/projects/${String(it.id).replace(/[^A-Za-z0-9_-]/g, '') || uid()}.jpg`;
+    state.assets[path] = {blob, dataUrl, sent: false};
+    it.image = path; state.profile.meta.updatedAt = new Date().toISOString();
+    changed(); renderPanel();
+    toast(`Imagem pronta (${c.width}×${c.height}, ${Math.round(blob.size / 1024)} KB).`);
+  } catch (err) { toast('Não foi possível ler a imagem: ' + err.message, true); }
+}
 const dataUrlToBlob = u => { const [h, d] = u.split(','), bin = atob(d), a = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) a[i] = bin.charCodeAt(i); return new Blob([a], {type: h.match(/:(.*?);/)[1]}); };
 
 /* ── Salvar ───────────────────────────────────── */
@@ -755,24 +822,47 @@ try {
   const last = localStorage.getItem(LAST_PUBLISH_KEY);
   if (last) { const text = `Última publicação: ${new Date(last).toLocaleString('pt-BR')}`; publishButton.title = text; $('#publishInfo').textContent = text; }
 } catch {}
+const blobToBase64 = async blob => {
+  const bytes = new Uint8Array(await blob.arrayBuffer());
+  let binary = ''; for (let i = 0; i < bytes.length; i += 0x8000) binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(binary);
+};
+async function postPublish(payload) {
+  const response = await fetch('/api/publish', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    if (response.status === 401) { location.replace('/login.html?reason=session'); throw new Error('Sessão expirada.'); }
+    throw new Error(result.error || `HTTP ${response.status}`);
+  }
+  return result;
+}
+/* Imagens de projetos ainda não publicadas e realmente usadas por algum projeto. */
+const pendingProjectImages = () => (state.profile.projects.items || []).map(it => it.image).filter((p, i, a) => p && a.indexOf(p) === i && state.assets[p] && !state.assets[p].sent);
 async function publishChanges() {
   if (publishButton.disabled) return;
   if (!confirm('Publicar as alterações atuais do currículo no site?')) return;
   publishButton.disabled = true; publishButton.textContent = '⏳ Publicando…';
   try {
     state.profile.meta.updatedAt = new Date().toISOString();
+    // 1) imagens dos projetos, em lotes pequenos (limite de corpo das funções da Vercel)
+    const images = [];
+    for (const path of pendingProjectImages()) images.push({path, contentType: 'image/jpeg', base64: await blobToBase64(state.assets[path].blob)});
+    const batches = []; let cur = [], size = 0;
+    for (const im of images) {
+      if (cur.length && (cur.length >= 8 || size + im.base64.length > 3000000)) { batches.push(cur); cur = []; size = 0; }
+      cur.push(im); size += im.base64.length;
+    }
+    if (cur.length) batches.push(cur);
+    for (let b = 0; b < batches.length; b++) {
+      publishButton.textContent = `⏳ Imagens ${b + 1}/${batches.length}…`;
+      await postPublish({ images: batches[b] });
+      batches[b].forEach(im => { state.assets[im.path].sent = true; });
+    }
+    // 2) profile.json (e foto) por último, para nunca apontar para imagem ausente
+    publishButton.textContent = '⏳ Publicando…';
     const payload = { profile: state.profile };
-    if (state.photo) {
-      const bytes = new Uint8Array(await state.photo.blob.arrayBuffer());
-      let binary = ''; for (let i = 0; i < bytes.length; i += 0x8000) binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-      payload.photo = { contentType: 'image/jpeg', base64: btoa(binary) };
-    }
-    const response = await fetch('/api/publish', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-    const result = await response.json();
-    if (!response.ok) {
-      if (response.status === 401) { location.replace('/login.html?reason=session'); return; }
-      throw new Error(result.error || `HTTP ${response.status}`);
-    }
+    if (state.photo) payload.photo = { contentType: 'image/jpeg', base64: await blobToBase64(state.photo.blob) };
+    const result = await postPublish(payload);
     const publishedAt = result.publishedAt || new Date().toISOString();
     localStorage.setItem(LAST_PUBLISH_KEY, publishedAt);
     const publicationLabel = `Última publicação: ${new Date(publishedAt).toLocaleString('pt-BR')}`;
@@ -831,13 +921,20 @@ async function exportHtml() {
     if (prof.meta.description) out = out.replace('<meta name="viewport"', m => `<meta name="description" content="${esc(prof.meta.description)}">\n${m}`);
     const photo = state.photo ? state.photo.blob : await (await fetch(PHOTO_PATH, {cache: 'no-store'})).blob();
     const buf = async b => new Uint8Array(await b.arrayBuffer()), enc = new TextEncoder();
-    const zip = makeZip([
+    const files = [
       {name: 'index.html', data: enc.encode(out)},
       {name: 'profile.json', data: enc.encode(JSON.stringify(prof, null, 2) + '\n')},
       {name: PHOTO_PATH, data: await buf(photo)}
-    ]);
+    ];
+    for (const path of new Set((prof.projects.items || []).map(x => x.image).filter(Boolean))) {
+      try {
+        const b = state.assets[path] ? state.assets[path].blob : await (await fetch(path, {cache: 'no-store'})).blob();
+        files.push({name: path, data: await buf(b)});
+      } catch (e) { /* imagem ausente: o cartão aparece sem capa */ }
+    }
+    const zip = makeZip(files);
     download(zip, 'cv-digital-deploy.zip');
-    toast('Pacote gerado: index.html + profile.json + uploads/profile.jpg (sem admin.html).');
+    toast(`Pacote gerado: index.html, profile.json e ${files.length - 2} imagem(ns) em uploads/ (sem admin.html).`);
   } catch (err) { toast('Falha ao exportar: ' + err.message, true); }
   btn.disabled = false;
 }
@@ -855,7 +952,7 @@ $('#fileImport').onchange = async e => {
 };
 function discardChanges() {
   if (state.dirty && !confirm('Descartar todas as alterações não salvas e voltar ao profile.json do projeto?')) return;
-  localStorage.removeItem(DRAFT_KEY); state.profile = normalize(clone(state.server)); state.photo = null; state.undo = [];
+  localStorage.removeItem(DRAFT_KEY); state.profile = normalize(clone(state.server)); state.photo = null; state.assets = {}; state.undo = [];
   state.dirty = false; state.draftBanner = false; updateStatus(); renderPanel(); pushPreview();
 }
 $('#btnDiscard').onclick = discardChanges;
@@ -883,6 +980,7 @@ async function init() {
   if (draft && draft.profile && draft.profile.hero) {
     state.profile = normalize(draft.profile); state.dirty = true; state.draftBanner = true;
     if (draft.photoDataUrl) state.photo = {dataUrl: draft.photoDataUrl, blob: dataUrlToBlob(draft.photoDataUrl)};
+    for (const [k, u] of Object.entries(draft.assets || {})) { try { state.assets[k] = {dataUrl: u, blob: dataUrlToBlob(u), sent: false}; } catch (e) {} }
   } else state.profile = normalize(clone(state.server));
   renderNav(); renderPanel(); updateStatus(); fitPreview(); hello(); pushPreview();
   publishButton.disabled = false;

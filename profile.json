@@ -497,6 +497,42 @@
       }
     ]
   },
+  "projects": {
+    "enabled": true,
+    "title": "Projetos & Iniciativas",
+    "subtitle": "Ideias que Saem do Papel",
+    "desc": "",
+    "items": [
+      {
+        "id": "proj-bookcringe",
+        "title": "BookCringe",
+        "subtitle": "Cringe por fora, cult por dentro.",
+        "description": "<p>Livros, filmes, séries e cultura pop conectados de um jeito que você dificilmente encontra por aí. Biblioteca com resenhas e notas, vídeos, estatísticas de leitura e o Clube do Livro com leituras mensais.</p>",
+        "image": "",
+        "tags": [
+          "Livros",
+          "Cultura Pop",
+          "Resenhas",
+          "Clube do Livro",
+          "Estatísticas de leitura"
+        ],
+        "url": "https://bookcringe.com.br",
+        "buttonLabel": "Visitar o BookCringe",
+        "featured": true
+      },
+      {
+        "id": "proj-forja-de-apps",
+        "title": "Forja de Apps",
+        "subtitle": "Iniciativa de criação de aplicativos",
+        "description": "",
+        "image": "",
+        "tags": [],
+        "url": "",
+        "buttonLabel": "Visitar projeto",
+        "featured": false
+      }
+    ]
+  },
   "footer": {
     "quote": "\"Transformando <span>dados em decisões</span> e <span>planejamento em resultados</span>.\"",
     "sub": "Filipe Santos · Belo Horizonte, MG · 2026"
