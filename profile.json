@@ -4,7 +4,7 @@
     "title": "Filipe Santos — Executive Career Profile",
     "description": "",
     "lang": "pt-BR",
-    "updatedAt": "2026-11-24T23:29:01.151Z"
+    "updatedAt": "2026-11-26T23:14:15.324Z"
   },
   "hero": {
     "eyebrow": "Executive Career Profile",
@@ -532,10 +532,14 @@
         "subtitle": "Iniciativa de criação de aplicativos",
         "description": "Iniciativa independente voltada à concepção e desenvolvimento de produtos digitais, explorando tecnologia, inteligência artificial e soluções centradas na experiência do usuário.",
         "image": "uploads/projects/proj-forja-de-apps.jpg",
-        "tags": [],
-        "url": "",
+        "tags": [
+          "DEV",
+          "APP",
+          "INOVATION"
+        ],
+        "url": "https://aforja.dev.br",
         "buttonLabel": "Visitar projeto",
-        "featured": false
+        "featured": true
       }
     ]
   },
